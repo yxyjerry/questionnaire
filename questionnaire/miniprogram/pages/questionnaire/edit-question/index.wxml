@@ -1,0 +1,51 @@
+<!-- questionnaire/edit-question/index.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">编辑{{ questionType }}</text>
+  </view>
+  
+  <view class="content">
+    <!-- 问题内容 -->
+    <view class="section">
+      <view class="section-title">问题内容</view>
+      <input 
+        class="input" 
+        placeholder="请输入问题内容" 
+        value="{{ questionContent }}" 
+        bindinput="onContentInput"
+      />
+    </view>
+    
+    <!-- 选项（单选/多选） -->
+    <view class="section" wx:if="{{ questionType !== '填空题' }}">
+      <view class="section-title">选项设置</view>
+      <view class="options-list">
+        <view class="option-item" wx:for="{{ options }}" wx:key="index">
+          <input 
+            class="option-input" 
+            placeholder="请输入选项内容" 
+            value="{{ item }}" 
+            bindinput="onOptionInput"
+            data-index="{{ index }}"
+          />
+          <button class="remove-option" bindtap="removeOption" data-index="{{ index }}">删除</button>
+        </view>
+      </view>
+      <button class="btn-add-option" bindtap="addOption">+ 添加选项</button>
+    </view>
+    
+    <!-- 必填设置 -->
+    <view class="section">
+      <view class="section-title">设置</view>
+      <view class="switch-item">
+        <text class="switch-label">是否必填</text>
+        <switch class="switch" checked="{{ isRequired }}" bindchange="onRequiredChange" />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <button class="btn-save" bindtap="saveQuestion">保存问题</button>
+  </view>
+</view>

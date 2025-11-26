@@ -1,0 +1,51 @@
+<!-- questionnaire/index.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">问卷调查系统</text>
+  </view>
+  
+  <view class="content">
+    <!-- 创建新问卷 -->
+    <view class="section">
+      <view class="section-title">创建新问卷</view>
+      <view class="form-item">
+        <input 
+          class="input" 
+          placeholder="请输入问卷标题" 
+          value="{{ questionnaireTitle }}" 
+          bindinput="onTitleInput"
+        />
+      </view>
+      <view class="form-item">
+        <textarea 
+          class="textarea" 
+          placeholder="请输入问卷描述（可选）" 
+          value="{{ questionnaireDesc }}" 
+          bindinput="onDescInput"
+        />
+      </view>
+      <button class="btn-primary" bindtap="createQuestionnaire">创建问卷</button>
+    </view>
+    
+    <!-- 问卷列表 -->
+    <view class="section" wx:if="{{ questionnaires.length > 0 }}">
+      <view class="section-title">我的问卷</view>
+      <view class="questionnaire-list">
+        <view 
+          class="questionnaire-item" 
+          wx:for="{{ questionnaires }}" 
+          wx:key="id"
+          bindtap="editQuestionnaire"
+          data-id="{{ item.id }}"
+        >
+          <view class="questionnaire-title">{{ item.title }}</view>
+          <view class="questionnaire-desc">{{ item.description }}</view>
+          <view class="questionnaire-meta">
+            <text class="meta-item">问题数: {{ item.questions.length || 0 }}</text>
+            <text class="meta-item">创建时间: {{ item.createTime }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -25,5 +25,13 @@
       </view>
     </view>
   </view>
+  
+  <!-- 问卷系统入口 -->
+  <view class="questionnaire-entry">
+    <view class="section-title">问卷调查系统</view>
+    <view class="entry-description">创建和填写问卷调查</view>
+    <button class="btn-questionnaire" bindtap="goToQuestionnaire">进入问卷系统</button>
+  </view>
+  
   <cloud-tip-modal showTipProps="{{showTip}}" title="{{title}}" content="{{content}}"></cloud-tip-modal>
 </view>

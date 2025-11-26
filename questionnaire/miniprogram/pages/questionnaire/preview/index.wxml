@@ -1,0 +1,85 @@
+<!-- questionnaire/preview/index.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">{{ questionnaire.title }}</text>
+    <text class="desc">{{ questionnaire.description || '欢迎填写问卷' }}</text>
+  </view>
+  
+  <view class="content">
+    <!-- 问题列表 -->
+    <view class="question-list">
+      <view 
+        class="question-item" 
+        wx:for="{{ questionnaire.questions }}" 
+        wx:for-index="index"
+        wx:for-item="question"
+        wx:key="index"
+      >
+        <view class="question-header">
+          <text class="question-index">{{ index + 1 }}.</text>
+          <text class="question-content">{{ question.content }}</text>
+          <text class="required" wx:if="{{ question.isRequired }}">*</text>
+        </view>
+        
+        <!-- 单选题 -->
+        <view class="options" wx:if="{{ question.type === 'single' }}">
+          <radio-group bindchange="onRadioChange" data-index="{{ index }}">
+            <label 
+              class="option-item" 
+              wx:for="{{ question.options }}" 
+              wx:for-index="optionIndex"
+              wx:for-item="option"
+              wx:key="optionIndex"
+            >
+              <radio 
+                value="{{ optionIndex }}" 
+                checked="{{ answers[index] && answers[index].value === optionIndex }}"
+              />
+              <text class="option-text">{{ option }}</text>
+            </label>
+          </radio-group>
+        </view>
+        
+        <!-- 多选题 -->
+        <view class="options" wx:if="{{ question.type === 'multiple' }}">
+          <checkbox-group bindchange="onCheckboxChange" data-index="{{ index }}">
+            <label 
+              class="option-item" 
+              wx:for="{{ question.options }}" 
+              wx:for-index="optionIndex"
+              wx:for-item="option"
+              wx:key="optionIndex"
+            >
+              <checkbox 
+                value="{{ optionIndex }}" 
+                checked="{{ isChecked(answers[index] && answers[index].value, optionIndex) }}"
+              />
+              <text class="option-text">{{ option }}</text>
+            </label>
+          </checkbox-group>
+        </view>
+        
+        <!-- 填空题 -->
+        <view class="fill-input" wx:if="{{ question.type === 'fill' }}">
+          <textarea 
+            class="fill-textarea" 
+            placeholder="请输入答案" 
+            value="{{ answers[index] && answers[index].value || '' }}" 
+            bindinput="onFillInput"
+            data-index="{{ index }}"
+            maxlength="500"
+          />
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-tips" wx:if="{{ questionnaire.questions.length === 0 }}">
+      <text>该问卷暂无问题</text>
+    </view>
+  </view>
+  
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <button class="btn-submit" bindtap="submitQuestionnaire">提交问卷</button>
+  </view>
+</view>

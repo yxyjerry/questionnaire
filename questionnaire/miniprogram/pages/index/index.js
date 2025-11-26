@@ -86,6 +86,13 @@ Page({
     title: "",
     content: ""
   },
+  
+  goToQuestionnaire() {
+    wx.navigateTo({
+      url: '/pages/questionnaire/index'
+    });
+  }
+
   onClickPowerInfo(e) {
     const app = getApp()
     if(!app.globalData.env) {
@@ -125,6 +132,13 @@ Page({
       });
     }
   },
+  
+  goToQuestionnaire() {
+    wx.navigateTo({
+      url: '/pages/questionnaire/index'
+    });
+  }
+
 
   jumpPage(e) {
     const { type, page } = e.currentTarget.dataset;
@@ -139,6 +153,13 @@ Page({
       });
     }
   },
+  
+  goToQuestionnaire() {
+    wx.navigateTo({
+      url: '/pages/questionnaire/index'
+    });
+  }
+
 
   onClickDatabase(powerList,selectedItem) {
     wx.showLoading({
@@ -184,4 +205,11 @@ Page({
         }
       });
   },
+  
+  goToQuestionnaire() {
+    wx.navigateTo({
+      url: '/pages/questionnaire/index'
+    });
+  }
+
 });
