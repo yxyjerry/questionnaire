@@ -1,0 +1,30 @@
+```
+# Mini-program build artifacts
+questionnaire/miniprogram/.swan/
+questionnaire/miniprogram/dist/
+questionnaire/miniprogram/build/
+questionnaire/miniprogram/.cache/
+questionnaire/miniprogram/node_modules/
+
+# Common build artifacts
+*.swp
+*.swo
+*.tmp
+*.log
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+```

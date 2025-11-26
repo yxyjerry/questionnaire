@@ -1,0 +1,68 @@
+<!-- questionnaire/edit/index.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">编辑问卷</text>
+  </view>
+  
+  <view class="content">
+    <!-- 问卷基本信息 -->
+    <view class="section">
+      <view class="section-title">{{ questionnaire.title }}</view>
+      <view class="section-desc">{{ questionnaire.description || '暂无描述' }}</view>
+    </view>
+    
+    <!-- 添加问题 -->
+    <view class="section">
+      <view class="section-title">添加问题</view>
+      <view class="question-types">
+        <button class="question-type-btn" bindtap="addQuestion" data-type="single">单选题</button>
+        <button class="question-type-btn" bindtap="addQuestion" data-type="multiple">多选题</button>
+        <button class="question-type-btn" bindtap="addQuestion" data-type="fill">填空题</button>
+      </view>
+    </view>
+    
+    <!-- 问题列表 -->
+    <view class="section" wx:if="{{ questionnaire.questions.length > 0 }}">
+      <view class="section-title">问题列表</view>
+      <view class="question-list">
+        <view 
+          class="question-item" 
+          wx:for="{{ questionnaire.questions }}" 
+          wx:key="index"
+          wx:for-index="index"
+        >
+          <view class="question-header">
+            <text class="question-index">{{ index + 1 }}.</text>
+            <text class="question-content">{{ item.content }}</text>
+            <view class="question-actions">
+              <button class="action-btn edit" bindtap="editQuestion" data-index="{{ index }}">编辑</button>
+              <button class="action-btn delete" bindtap="deleteQuestion" data-index="{{ index }}">删除</button>
+            </view>
+          </view>
+          
+          <!-- 选项显示 -->
+          <view class="options" wx:if="{{ item.type !== 'fill' }}">
+            <view class="option" wx:for="{{ item.options }}" wx:key="index">
+              <text class="option-prefix">{{ item.type === 'single' ? '○' : '□' }}</text>
+              <text class="option-text">{{ item.type === 'single' ? ' 单选: ' : ' 多选: ' }}{{ item }}</text>
+            </view>
+          </view>
+          
+          <!-- 填空题提示 -->
+          <view class="fill-hint" wx:if="{{ item.type === 'fill' }}">
+            <text class="fill-text">填空题</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-tips" wx:else>
+      <text>暂无问题，点击上方按钮添加问题</text>
+    </view>
+  </view>
+  
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <button class="btn-preview" bindtap="previewQuestionnaire">预览问卷</button>
+  </view>
+</view>

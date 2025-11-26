@@ -1,0 +1,182 @@
+/* questionnaire/edit/index.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  text-align: center;
+  padding: 20rpx 0;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.content {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.section {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.section-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+  line-height: 1.5;
+}
+
+.question-types {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.question-type-btn {
+  flex: 1;
+  height: 80rpx;
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  margin-right: 10rpx;
+}
+
+.question-type-btn:last-child {
+  margin-right: 0;
+}
+
+.question-list {
+  margin-top: 20rpx;
+}
+
+.question-item {
+  padding: 25rpx;
+  border: 2rpx solid #eee;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  background-color: #fafafa;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.question-index {
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #333;
+  margin-right: 10rpx;
+}
+
+.question-content {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  word-break: break-all;
+}
+
+.question-actions {
+  display: flex;
+  gap: 10rpx;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  line-height: 1;
+}
+
+.action-btn.edit {
+  background-color: #4cd964;
+  color: #fff;
+}
+
+.action-btn.delete {
+  background-color: #ff3b30;
+  color: #fff;
+}
+
+.options {
+  margin-left: 40rpx;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+
+.option:last-child {
+  margin-bottom: 0;
+}
+
+.option-prefix {
+  margin-right: 10rpx;
+  font-size: 28rpx;
+}
+
+.fill-hint {
+  margin-left: 40rpx;
+  padding: 10rpx;
+  background-color: #e3f2fd;
+  border-radius: 8rpx;
+}
+
+.fill-text {
+  font-size: 26rpx;
+  color: #2196f3;
+}
+
+.empty-tips {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background-color: #fff;
+  box-shadow: 0 -4rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.btn-preview {
+  width: 100%;
+  height: 80rpx;
+  background-color: #ff9500;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  line-height: 80rpx;
+}
